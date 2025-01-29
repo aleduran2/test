@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service.service';
+import { CardComponent } from '../card/card.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-users-list',
-  imports: [],
+  imports: [CardComponent, CommonModule],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.css'
 })
@@ -23,8 +25,8 @@ export class UsersListComponent implements OnInit {
     })
   }
 
-  searchTerm(value: string) {
-    this.filteredUsers = this.users.filter(user => user.name.includes(value))
+  searchTerm(event: any) {
+    this.filteredUsers = this.users.filter(user => user.name.includes(event.target?.value))
   }
 
 }

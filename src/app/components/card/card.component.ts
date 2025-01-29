@@ -9,6 +9,6 @@ import { User } from '../../models/user.model';
 })
 export class CardComponent {
 
-  @Input() user: User;
+  @Input() user: User | undefined;
 
 }
